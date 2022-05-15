@@ -25,4 +25,11 @@ public class ProductServiceImpl implements ProductService {
         ResponseEntity<List> result = restTemplate.getForEntity(url, List.class);
         return result.getBody();
     }
+
+    @Override
+    public Product createProduct(Product product) {
+        ResponseEntity<Product> result = restTemplate.postForEntity(url, product, Product.class);
+        return result.getBody();
+    }
+    
 }
