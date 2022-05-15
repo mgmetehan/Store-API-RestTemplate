@@ -6,7 +6,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Metehan Gültekin
@@ -31,5 +33,15 @@ public class ProductServiceImpl implements ProductService {
         ResponseEntity<Product> result = restTemplate.postForEntity(url, product, Product.class);
         return result.getBody();
     }
-    
+
+    @Override
+    public Product getProductById(Integer id) {
+        ResponseEntity<Product> result = restTemplate.getForEntity(url + "/" + id, Product.class);
+        return result.getBody();
+    }
+
+    @Override
+    public void deleteProductById(Integer id) {
+        restTemplate.delete(url + "/" + id);
+    }
 }

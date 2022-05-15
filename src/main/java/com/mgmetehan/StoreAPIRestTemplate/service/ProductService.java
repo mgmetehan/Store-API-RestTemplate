@@ -12,4 +12,8 @@ public interface ProductService {
     List<Product> getAllProducts();
 
     Product createProduct(Product product);
+
+    Product getProductById(Integer id);
+
+    void deleteProductById(Integer id);
 }
